@@ -1,14 +1,10 @@
-package com.example.firetable;
+package com.example.firetable.Models;
 
 public class User {
 
     public String name, email;
 
-    public User(){
-
-    }
-
-    public User(String name, String username){
+    public User(String name, String email){
         this.name = name;
         this.email = email;
     }

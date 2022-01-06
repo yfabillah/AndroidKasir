@@ -21,19 +21,6 @@
         android:layout_marginTop="50dp"
         />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi Kasir"
-        android:textStyle="italic"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner"
-        />
-
     <EditText
         android:id="@+id/name"
         android:layout_width="380dp"
@@ -42,10 +29,10 @@
         android:ems="10"
         android:hint="Nama"
         android:inputType="text"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:layout_constraintTop_toBottomOf="@+id/banner"
         />
 
     <EditText
@@ -56,7 +43,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
@@ -70,7 +57,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email"
@@ -79,12 +66,12 @@
     <Button
         android:id="@+id/register"
         android:layout_width="380dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#0eD689"
         android:text="Register"
         android:textColor="#ffff"
-        android:textSize="26sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

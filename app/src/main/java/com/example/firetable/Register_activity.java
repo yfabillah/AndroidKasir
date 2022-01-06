@@ -13,13 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.firetable.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.regex.Pattern;
 
 public class Register_activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -102,8 +101,8 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
                         if(task.isSuccessful()){
                             User user = new User(name, email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            FirebaseDatabase.getInstance().getReference("users")
+                                    .child(mAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -122,8 +121,5 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
                         }
                     }
                 });
-
-
-
     }
 }
