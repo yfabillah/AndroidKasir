@@ -11,12 +11,14 @@
         android:theme="@style/Theme.FireTable">
         <activity
             android:name=".HomeActivity"
+            android:label="Projects"
             android:exported="true" />
         <activity
             android:name=".Register_activity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.FireTable.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

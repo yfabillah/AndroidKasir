@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+
+    private Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAuth = FirebaseAuth.getInstance();
 
+    }
+
+    private void showErrorSnackbar(String message){
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.login_root_container), message, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(getResources().getColor(R.color.error_color));
+        snackbar.show();
     }
 
     @Override
@@ -95,22 +104,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (user.isEmailVerified()){
                         startActivity(new Intent(MainActivity.this, HomeActivity.class ));
                     }else {
+
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "Check Email Verification", Toast.LENGTH_LONG).show();
                     }
-
-
-                }else{
-                    Toast.makeText(MainActivity.this, "Failed to Login!", Toast.LENGTH_LONG).show();
                 }
             }
+        }).addOnFailureListener(e -> {
+            progressBar.setVisibility(View.GONE);
+            showErrorSnackbar(e.getMessage());
+//            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         });
     }
 }

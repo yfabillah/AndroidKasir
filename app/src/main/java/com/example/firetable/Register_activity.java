@@ -1,6 +1,7 @@
 package com.example.firetable;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,6 +32,11 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
@@ -47,6 +53,19 @@ public class Register_activity extends AppCompatActivity implements View.OnClick
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 
     @Override
     public void onClick(View view) {

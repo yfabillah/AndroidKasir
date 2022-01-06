@@ -1,14 +1,15 @@
 package com.example.firetable.Models;
 
-public class User {
+public class Projects {
+    public String name;
+    public String key;
 
-    public String name, email;
-
-    public User() {
+    public Projects() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
-    public User(String name, String email){
+
+    public Projects(String name, String key){
         this.name = name;
-        this.email = email;
+        this.key = key;
     }
 }
